@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background Changer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      main {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+      }
+
+      button {
+        width: 250px;
+        height: 50px;
+        padding: 5px;
+        border: none;
+        font-size: 1em;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 20px;
+        border: 1px solid #808080;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <button id="changeBtn">Change Background Color</button>
+    </main>
+    <script>
+      // Seleksi Dom
+      const body = document.body;
+      const changeBtn = document.getElementById("changeBtn");
+
+      // Menentukan Warna Random
+      const getRandomColor = () => {
+        // Simpan karakter warna hexadesimal
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        // Pengulangan untuk mendapatkan warna acak
+        for (let i = 0; i < 6; i++) {
+          // Tambahkan operator aritmatika untuk memilih indek acak dari variabel letters
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        // Kembalikan nilai color Dan keluar
+        return color;
+      };
+
+      // Tambahkan event click pada button
+      changeBtn.addEventListener("click", function () {
+        // Panggil fungsi getrandomcolor
+        const randomColor = getRandomColor();
+        // Ubah style pada body
+        body.style.backgroundColor = randomColor;
+      });
+    </script>
+  </body>
+</html>
